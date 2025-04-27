@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "135760507427",
+    "project_id": "smartfarmiot-ec8ab",
+    "storage_bucket": "smartfarmiot-ec8ab.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:135760507427:android:dd67568198bb61ca81b796",
+        "android_client_info": {
+          "package_name": "com.example.smartfarm_iot_clean"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVxuRaxiMcuom2d-L9vEV5JxtyrOhhIkE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
