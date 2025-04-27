@@ -1,30 +1,25 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:smartfarm_iot1/main.dart';
-
+import 'package:smartfarm_iot1/views/main_screen.dart'; // <- corriger ici ton import
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp(isDarkMode: false));
+  testWidgets('Navigation bar changes screens', (WidgetTester tester) async {
+    // Build MainScreen and trigger a frame
+    await tester.pumpWidget(const MaterialApp(
+      home: MainScreen(),
+    ));
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Vérifie que le premier écran (Dashboard) est affiché
+    expect(find.text('Dashboard'), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    // Tape sur l'icône "Analytics"
+    await tester.tap(find.byIcon(Icons.auto_graph));
+    await tester.pumpAndSettle();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Tape sur l'icône "Settings"
+    await tester.tap(find.byIcon(Icons.settings));
+    await tester.pumpAndSettle();
+
+    // Ici tu peux ajouter plus de vérifications selon ce qui apparaît sur ton écran Settings
   });
 }

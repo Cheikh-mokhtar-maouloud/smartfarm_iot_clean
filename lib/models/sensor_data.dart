@@ -4,6 +4,8 @@ class SensorData {
   final double humidity;
   final double soilMoisture;
   final double lightLevel;
+  final double pollutionLevel; // Ajout du niveau de pollution
+  final bool waterValveOpen; // État de la vanne d'eau
 
   SensorData({
     required this.timestamp,
@@ -11,15 +13,21 @@ class SensorData {
     required this.humidity,
     required this.soilMoisture,
     required this.lightLevel,
+    this.pollutionLevel = 0.0,
+    this.waterValveOpen = false,
   });
 
   factory SensorData.fromJson(Map<String, dynamic> json) {
     return SensorData(
-      timestamp: DateTime.parse(json['timestamp']),
-      temperature: json['temperature'].toDouble(),
-      humidity: json['humidity'].toDouble(),
-      soilMoisture: json['soilMoisture'].toDouble(),
-      lightLevel: json['lightLevel'].toDouble(),
+      timestamp: json['timestamp'] is String 
+          ? DateTime.parse(json['timestamp']) 
+          : json['timestamp'].toDate(),
+      temperature: json['temperature']?.toDouble() ?? 0.0,
+      humidity: json['humidity']?.toDouble() ?? 0.0,
+      soilMoisture: json['soilMoisture']?.toDouble() ?? 0.0,
+      lightLevel: json['lightLevel']?.toDouble() ?? 0.0,
+      pollutionLevel: json['pollutionLevel']?.toDouble() ?? 0.0,
+      waterValveOpen: json['waterValveOpen'] ?? false,
     );
   }
 
@@ -30,6 +38,8 @@ class SensorData {
       'humidity': humidity,
       'soilMoisture': soilMoisture,
       'lightLevel': lightLevel,
+      'pollutionLevel': pollutionLevel,
+      'waterValveOpen': waterValveOpen,
     };
   }
 }

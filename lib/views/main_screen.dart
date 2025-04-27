@@ -1,7 +1,10 @@
+// lib/views/main_screen.dart
 import 'package:flutter/material.dart';
 import 'package:smartfarm_iot1/views/home/home_screen.dart';
 import 'package:smartfarm_iot1/views/analytics/analytics_screen.dart';
 import 'package:smartfarm_iot1/views/settings/settings_screen.dart';
+import 'package:smartfarm_iot1/views/irrigation/water_control_screen.dart';
+import 'package:smartfarm_iot1/views/pollution/pollution_monitor_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -16,6 +19,8 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _screens = [
     const HomeScreen(),
     const AnalyticsScreen(),
+    const WaterControlScreen(),
+    const PollutionMonitorScreen(),
     const SettingsScreen(),
   ];
 
@@ -30,6 +35,7 @@ class _MainScreenState extends State<MainScreen> {
             _currentIndex = index;
           });
         },
+        type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.dashboard),
@@ -38,6 +44,14 @@ class _MainScreenState extends State<MainScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.auto_graph),
             label: 'Analytics',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.water_drop),
+            label: 'Irrigation',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.cloud),
+            label: 'Pollution',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
